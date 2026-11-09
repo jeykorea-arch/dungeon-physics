@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>던전 앤 피직스</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <!-- 엔진 -->
+  <script src="lib/phaser.min.js"></script>
+
+  <!-- 자동 생성 (work/prepare_game_assets.py) -->
+  <script src="js/generated/manifest.js"></script>
+  <script src="js/generated/raw_json.js"></script>
+
+  <!-- 고쳐 쓰는 설정·데이터 -->
+  <script src="js/config.js"></script>
+  <script src="js/data/act2_controls.js"></script>
+  <!-- 2막 계산 모듈 (값은 config.js 의 act2) -->
+  <script src="js/physics/act2/electric.js"></script>
+  <script src="js/physics/act2/circuit.js"></script>
+  <script src="js/physics/act2/capacitor.js"></script>
+  <script src="js/physics/act2/magnetism.js"></script>
+  <script src="js/physics/act2/induction.js"></script>
+  <!-- 3막 계산 모듈 (값은 config.js 의 act3) -->
+  <script src="js/physics/act3/interference.js"></script>
+  <script src="js/physics/act3/optics.js"></script>
+  <script src="js/physics/act3/dots.js"></script>
+  <script src="js/physics/act3/spectrum.js"></script>
+  <script src="js/physics/act3/diode.js"></script>
+  <script src="js/physics/act3/relativity.js"></script>
+  <script src="js/data/scenes.js"></script>
+  <script src="js/data/sound_volumes.js"></script>
+  <script src="js/data/exams.js"></script>
+  <script src="js/data/unlocks.js"></script>
+  <script src="js/data/dialogue/speakers.js"></script>
+  <script src="js/data/dialogue/Prologue.js"></script>
+  <script src="js/data/dialogue/Ch1_1.js"></script>
+  <script src="js/data/dialogue/Ch1_2.js"></script>
+  <script src="js/data/dialogue/Ch1_3.js"></script>
+  <script src="js/data/dialogue/Ch1_4.js"></script>
+  <script src="js/data/dialogue/Ch1_5.js"></script>
+  <script src="js/data/dialogue/Ch1_6.js"></script>
+  <script src="js/data/dialogue/Transitions.js"></script>
+  <script src="js/data/dialogue/Act2Story.js"></script>
+  <script src="js/data/dialogue/Ch2_1.js"></script>
+  <script src="js/data/dialogue/Ch2_2.js"></script>
+  <script src="js/data/dialogue/Ch2_3.js"></script>
+  <script src="js/data/dialogue/Ch2_4.js"></script>
+  <script src="js/data/dialogue/Ch2_5.js"></script>
+  <script src="js/data/dialogue/Ch2_6.js"></script>
+  <script src="js/data/dialogue/Act3Story.js"></script>
+  <script src="js/data/dialogue/Ch3_1.js"></script>
+  <script src="js/data/dialogue/Ch3_2.js"></script>
+  <script src="js/data/dialogue/Ch3_3.js"></script>
+  <script src="js/data/dialogue/Ch3_4.js"></script>
+  <script src="js/data/dialogue/Ch3_5.js"></script>
+  <script src="js/data/dialogue/Ch3_6.js"></script>
+  <script src="js/data/boss_curses.js"></script>
+  <script src="js/data/spellbook_act2.js"></script>
+  <script src="js/data/spellbook_act3.js"></script>
+  <script src="js/data/act3_numbers.js"></script>
+  <script src="js/data/credits.js"></script>
+  <script src="js/data/goals.js"></script>
+  <script src="js/data/predictions.js"></script>
+  <script src="js/data/machine_quiz.js"></script>
+
+  <!-- 공통 시스템 -->
+  <script src="js/core/assets.js"></script>
+  <script src="js/core/sound.js"></script>
+  <script src="js/core/save.js"></script>
+  <script src="js/core/curse.js"></script>
+  <script src="js/core/scene_flow.js"></script>
+  <script src="js/core/ui/uikit.js"></script>
+  <script src="js/core/ui/dialogue.js"></script>
+  <script src="js/core/ui/hud.js"></script>
+  <script src="js/core/ui/spellbook.js"></script>
+  <script src="js/core/ui/unlock_card.js"></script>
+  <script src="js/core/ui/exam.js"></script>
+  <script src="js/core/ui/teacher_menu.js"></script>
+  <script src="js/core/ui/result_board.js"></script>
+  <script src="js/core/ui/tower_map.js"></script>
+  <script src="js/core/held_item.js"></script>
+  <script src="js/core/base_scene.js"></script>
+
+  <!-- 장면 -->
+  <script src="js/scenes/basic_scenes.js"></script>
+  <script src="js/scenes/StoryScenes.js"></script>
+  <script src="js/scenes/SeesawGateScene.js"></script>
+  <script src="js/scenes/BoxScaleScene.js"></script>
+  <script src="js/scenes/TowerScene.js"></script>
+  <script src="js/scenes/SeesawBridgeScene.js"></script>
+  <script src="js/scenes/IceCorridorScene.js"></script>
+  <script src="js/scenes/BridgeScene.js"></script>
+  <script src="js/scenes/SledScene.js"></script>
+  <script src="js/scenes/IceCombatScene.js"></script>
+  <script src="js/scenes/IceLakeScene.js"></script>
+  <script src="js/scenes/IceTrollScene.js"></script>
+  <script src="js/scenes/MinecartScene.js"></script>
+  <script src="js/scenes/RockRollScene.js"></script>
+  <script src="js/scenes/RoughFloorScene.js"></script>
+  <script src="js/scenes/IceSpiritScene.js"></script>
+  <script src="js/scenes/MerchantPlazaScene.js"></script>
+  <script src="js/scenes/MerchantBossScene.js"></script>
+  <!-- 2막 -->
+  <script src="js/scenes/act2/LabScene.js"></script>
+  <script src="js/scenes/act2/LampScene.js"></script>
+  <script src="js/scenes/act2/BoxScene.js"></script>
+  <script src="js/scenes/act2/VaultScene.js"></script>
+  <script src="js/scenes/act2/LiftScene.js"></script>
+  <script src="js/scenes/act2/BeaconScene.js"></script>
+  <script src="js/scenes/act3/FringeScene.js"></script>
+  <script src="js/scenes/act3/LensScene.js"></script>
+  <script src="js/scenes/act3/DualityScene.js"></script>
+  <script src="js/scenes/act3/SpectrumScene.js"></script>
+  <script src="js/scenes/act3/BridgeDiodeScene.js"></script>
+  <script src="js/scenes/act3/RelativityScene.js"></script>
+  <script src="js/scenes/act3/FinalBossScene.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
